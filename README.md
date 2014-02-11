@@ -1,89 +1,52 @@
-# grunt-lint5
+grunt-lint5
+===
 
 > HTML5 validation
 
-## Getting Started
-This plugin requires Grunt `~0.4.1`
+Getting Started
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+This plugin requires Grunt ~0.4.1
 
-```shell
+If you haven't used Grunt before, be sure to check out the Getting Started guide, as it explains how to create a Gruntfile as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+```
 npm install grunt-lint5 --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
-```js
+```
 grunt.loadNpmTasks('grunt-lint5');
 ```
 
-## The "lint5" task
+Usage Examples
 
-### Overview
-In your project's Gruntfile, add a section named `lint5` to the data object passed into `grunt.initConfig()`.
+Default Options
 
-```js
+In your project's Gruntfile, add a section named lint5 to the data object passed into grunt.initConfig().
+
+```
 grunt.initConfig({
   lint5: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
+    views: "value" // The value in this key:value pair refer to where your template dir
+    defaults: {
+        // if you have used nunjucks and wanted to pass defaults value to the objects
+        // for example:
+        "email": "a@a.com",
+        "username": "abcd"
+      },
+      templates: {
+        "index.html": null, // files that you want to be check
+        "layout.html": null,
+      },
+      ignoreList: [
+        // the format of ignoreList is in the array format
+        "message to be ignored",
+        "another message"
+        // you can simply copy the message you got from the returned on the console
+        //for example this
+        "Bad value “” for attribute “action” on element “form”: Must be non-empty."
+      ]
+    }
+  })
 ```
-
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  lint5: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  lint5: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
