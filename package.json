@@ -1,7 +1,7 @@
 {
   "name": "grunt-lint5",
   "description": "HTML5 validation",
-  "version": "0.2.5",
+  "version": "0.2.4",
   "homepage": "https://github.com/alicoding/grunt-lint5",
   "author": {
     "name": "Ali Al Dallal",
