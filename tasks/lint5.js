@@ -58,7 +58,15 @@ grunt.registerTask( "lint5", "HTML5 validation", function() {
                 formatted = "  " + type + ": " + message;
 
         var ignored = ignoreList.some( function( ignore ) {
-          return ignore === message;
+          if (ignore === message) {
+            return true;
+          }
+
+          if (new RegExp(ignore).test(message)) {
+            return true;
+          }
+
+          return false;
         });
 
             if ( !ignored ) {
