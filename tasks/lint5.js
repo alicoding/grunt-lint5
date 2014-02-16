@@ -14,13 +14,13 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
 grunt.registerTask( "lint5", "HTML5 validation", function() {
-    grunt.config.requires( "lint5.views" );
+    grunt.config.requires( "lint5.dirPath" );
     grunt.config.requires( "lint5.templates" );
 
     var _ = grunt.util._,
         html5Lint = require( "html5-lint" ),
         nunjucks = require( "nunjucks" ),
-        views = grunt.config( "lint5.views" ),
+        views = grunt.config( "lint5.dirPath" ),
         defaults = grunt.config( "lint5.defaults" ) || {},
         templates = grunt.config( "lint5.templates" ),
         env = new nunjucks.Environment( new nunjucks.FileSystemLoader( views )),

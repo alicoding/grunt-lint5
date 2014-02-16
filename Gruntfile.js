@@ -20,6 +20,15 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc',
       },
+    },
+    lint5: {
+      dirPath: "tmp/views",
+      templates: [ "index.html" ],
+      defaults: {
+        "someVaribles": "value",
+        "anotherVariable": "value"
+      },
+      ignoreList: []
     }
   });
 
@@ -28,10 +37,11 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-lint5');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'lint5']);
 
 };

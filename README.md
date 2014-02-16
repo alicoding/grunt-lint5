@@ -30,27 +30,39 @@ In your project's Gruntfile, add a section named lint5 to the data object passed
 ``` js
 grunt.initConfig({
   lint5: {
-    views: "value" // The value in this key:value pair refer to where your template dir
+    dirPath: "path/to/template"
     defaults: {
-        // if you have used nunjucks and wanted to pass defaults value to the objects
-        // for example:
         "email": "a@a.com",
         "username": "abcd"
       },
       templates: [
-        "index.html", // files that you want to be check
+        "index.html",
         "layout.html"
       ],
       ignoreList: [
-        // the format of ignoreList is in the array format
         "message to be ignored",
         "another message"
-        // you can simply copy the message you got from the returned on the console
-        //for example this
         "Bad value “” for attribute “action” on element “form”: Must be non-empty.",
-        // you can also use a regular expression pattern inline, for example:
         "Attribute “[a-z1-9]+” not allowed on element “[a-z1-9]+” at this point"
       ]
     }
-  })
+  });
 ```
+
+### dirPath
+
+Value for this option is path to your tempalate files.
+
+### templates
+
+Value for this option is expected to be array of template files to lint.
+
+### ignoreList
+
+Value for this option is expected to be array of messages that you want to ignore.
+All messages can be copy from the error log directly, and it can be regular expression as an example above.
+
+
+-----------------------
+
+##### All issues and suggestion please submit an issue here or tweet me [@alicoding](http://twitter.com/alicoding).
