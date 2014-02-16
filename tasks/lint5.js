@@ -23,13 +23,19 @@ grunt.registerTask( "lint5", "HTML5 validation", function() {
         views = grunt.config( "lint5.views" ),
         defaults = grunt.config( "lint5.defaults" ) || {},
         templates = grunt.config( "lint5.templates" ),
-
         env = new nunjucks.Environment( new nunjucks.FileSystemLoader( views )),
         done = this.async(),
-        files = Object.keys( templates ),
-        pending = files.length,
         errors = 0,
-        ignoreList = grunt.config( "lint5.ignoreList" ) || [];
+        ignoreList = grunt.config( "lint5.ignoreList" ) || [],
+        files = [];
+
+    if (Array.isArray(templates)) {
+      files = templates;
+    } else {
+      files = Object.keys( templates );
+    }
+
+    var pending = files.length;
 
     function complete() {
       pending--;
@@ -58,7 +64,15 @@ grunt.registerTask( "lint5", "HTML5 validation", function() {
                 formatted = "  " + type + ": " + message;
 
         var ignored = ignoreList.some( function( ignore ) {
-          return ignore === message;
+          if (ignore === message) {
+            return true;
+          }
+
+          if (new RegExp(ignore).test(message)) {
+            return true;
+          }
+
+          return false;
         });
 
             if ( !ignored ) {

@@ -35,17 +35,19 @@ grunt.initConfig({
         "email": "a@a.com",
         "username": "abcd"
       },
-      templates: {
-        "index.html": null, // files that you want to be check
-        "layout.html": null,
-      },
+      templates: [
+        "index.html", // files that you want to be check
+        "layout.html"
+      ],
       ignoreList: [
         // the format of ignoreList is in the array format
         "message to be ignored",
         "another message"
         // you can simply copy the message you got from the returned on the console
         //for example this
-        "Bad value “” for attribute “action” on element “form”: Must be non-empty."
+        "Bad value “” for attribute “action” on element “form”: Must be non-empty.",
+        // you can also use a regular expression pattern inline, for example:
+        "Attribute “[a-z1-9]+” not allowed on element “[a-z1-9]+” at this point"
       ]
     }
   })
