@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "html5-lint": "0.2.3",
+    "html5-lint": "0.2.5",
     "nunjucks": "0.1.9"
   },
   "devDependencies": {
